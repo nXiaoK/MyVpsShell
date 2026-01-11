@@ -46,21 +46,6 @@ public class BidExternalInterfaceController {
         return successOrFail(vo);
     }
 
-    /**
-     * 查询AI评分结果接口
-     */
-    @PostMapping("/score/query")
-    public JGBAjaxResult query(@RequestBody BidScoreQuery scoreQuery) {
-        JGBAjaxResult valid = validateBaseParams(scoreQuery.getBdh(), scoreQuery.getBjbh(), scoreQuery.getZbid());
-        if (valid != null) {
-            return valid;
-        }
-        if (StringUtils.isEmpty(bjbh)) {
-            return JGBAjaxResult.error("报建编号不能为空");
-        }
-        BidScoreDetailVo vo = bidExternalInterfaceService.query(scoreQuery);
-        return successOrFail(vo);
-    }
 
     /**
      * 基础必填参数校验
