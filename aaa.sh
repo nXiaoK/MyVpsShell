@@ -20,26 +20,10 @@
         EvaluationClause queryTkbm = new EvaluationClause();
         queryTkbm.setClauseCode(scoreQuery.getTkbm());
         EvaluationClause evaluationClause = evaluationClauseService.selectEvaluationClauseList(queryTkbm).stream().findFirst().orElse(null);
-        if (evaluationClause == null) {
-            // 条款不存在
-            throw new RuntimeException("条款不存在");
-        }
         EvaluationResult params = new EvaluationResult();
         params.setProjectId(projectId);
         params.setClauseId(evaluationClause.getId());
         EvaluationResult evaluationResult = evaluationResultService.selectEvaluationResultList(params).stream().findFirst().orElse(null);
-        if (evaluationResult != null) {
-            BidScoreVo bidScoreVo = new BidScoreVo();
-            bidScoreVo.setTkbm(evaluationClause.getClauseCode());
-//            bidScoreVo.setReviewFactorCode(evaluationResult.getOpinion());
-            bidScoreVo.setRuleRefinement(evaluationResult.getOpinion());
-            bidScoreVo.setAiScore(evaluationResult.getScore());
-//            bidScoreVo.setIsScore(evaluationResult.isScore());
-            bidScoreVo.setScoreBasis(evaluationResult.getBasis());
-            bidScoreVo.setTimestamp(DateUtils.getNowDate().getTime());
-            bidScoreVo.setSign(scoreQuery.getSign());
-            return bidScoreVo;
-        }
         return null;
     }
 
