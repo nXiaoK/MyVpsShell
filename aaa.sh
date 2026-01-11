@@ -27,6 +27,16 @@
         return null;
     }
 
+    public JGBAjaxResult queryStatus(@RequestBody BidQueryStatus queryStatus) {
+        JGBAjaxResult valid = validateBaseParams(queryStatus.getBdh(), queryStatus.getBjbh(), queryStatus.getZbid());
+        if (valid != null) {
+            return valid;
+        }
+
+        BidStatusVo vo = bidExternalInterfaceService.queryStatus(queryStatus);
+        return successOrFail(vo);
+    }
+
     @Override
     public BidScoreDetailVo query(BidScoreQuery scoreQuery) {
         Long projectId = projectService.findProjectIdByBdhBjbhZbid(scoreQuery.getBjbh(), scoreQuery.getBdh(), scoreQuery.getZbid());
