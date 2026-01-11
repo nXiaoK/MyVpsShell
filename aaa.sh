@@ -6,8 +6,6 @@
         }
         List<SectionStatusVo> sectionStatusVos = evaluationResultService.selectSectionStatusVoListByProjectId(projectId);
         BidStatusVo bidStatusVo = new BidStatusVo();
-        BeanUtils.copyProperties(queryStatus, bidStatusVo);
-        bidStatusVo.setSectionStatusList(sectionStatusVos);
         return bidStatusVo;
     }
 
@@ -19,13 +17,10 @@
         }
         EvaluationClause queryTkbm = new EvaluationClause();
         queryTkbm.setClauseCode(scoreQuery.getTkbm());
-        EvaluationClause evaluationClause = evaluationClauseService.selectEvaluationClauseList(queryTkbm).stream().findFirst().orElse(null);
-        EvaluationResult params = new EvaluationResult();
-        params.setProjectId(projectId);
-        params.setClauseId(evaluationClause.getId());
         EvaluationResult evaluationResult = evaluationResultService.selectEvaluationResultList(params).stream().findFirst().orElse(null);
         return null;
     }
+dfafasfdfafdsfsf
 
     public JGBAjaxResult queryStatus(@RequestBody BidQueryStatus queryStatus) {
         JGBAjaxResult valid = validateBaseParams(queryStatus.getBdh(), queryStatus.getBjbh(), queryStatus.getZbid());
