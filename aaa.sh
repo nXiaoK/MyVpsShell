@@ -1,13 +1,4 @@
- @Override
-    public BidStatusVo queryStatus(BidQueryStatus queryStatus) {
-        Long projectId = projectService.findProjectIdByBdhBjbhZbid(queryStatus.getBjbh(), queryStatus.getBdh(), queryStatus.getZbid());
-        if (projectId == null || projectId <= 0) {
-            throw new RuntimeException("项目不存在");
-        }
-        List<SectionStatusVo> sectionStatusVos = evaluationResultService.selectSectionStatusVoListByProjectId(projectId);
-        BidStatusVo bidStatusVo = new BidStatusVo();
-        return bidStatusVo;
-    }
+
 
     @Override
     public BidScoreVo queryByTkbm(BidScoreQuery scoreQuery) {
@@ -32,6 +23,8 @@ dfafasfdfafdsfsf
         if (StringUtils.isEmpty(bjbh)) {
             return JGBAjaxResult.error("报建编号不能为空");
         }
+        dfasfsaffdsaf
+
         BidStatusVo vo = bidExternalInterfaceService.queryStatus(queryStatus);
         return successOrFail(vo);
     }
@@ -42,6 +35,9 @@ dfafasfdfafdsfsf
         if (projectId == null || projectId <= 0) {
             throw new RuntimeException("项目不存在");
         }
+
+
+        sdfafasfsfd
         List<ScoreDetail> scoreDetails = evaluationResultService.selectScoreDetailListByProjectId(projectId);
         BidScoreDetailVo detailVo = new BidScoreDetailVo();
         BeanUtils.copyProperties(scoreQuery, detailVo);
