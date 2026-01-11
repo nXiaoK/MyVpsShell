@@ -34,14 +34,6 @@ public class BidExternalInterfaceController {
      */
     @PostMapping("/score/queryByTkbm")
     public JGBAjaxResult queryByTkbm(@RequestBody BidScoreQuery scoreQuery) {
-        JGBAjaxResult valid = validateBaseParams(scoreQuery.getBdh(), scoreQuery.getBjbh(), scoreQuery.getZbid());
-        if (valid != null) {
-            return valid;
-        }
-        if (StringUtils.isEmpty(scoreQuery.getTkbm())) {
-            return JGBAjaxResult.error("条款编码不能为空");
-        }
-
         BidScoreVo vo = bidExternalInterfaceService.queryByTkbm(scoreQuery);
         return successOrFail(vo);
     }
