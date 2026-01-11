@@ -55,7 +55,9 @@ public class BidExternalInterfaceController {
         if (valid != null) {
             return valid;
         }
-
+        if (StringUtils.isEmpty(bjbh)) {
+            return JGBAjaxResult.error("报建编号不能为空");
+        }
         BidScoreDetailVo vo = bidExternalInterfaceService.query(scoreQuery);
         return successOrFail(vo);
     }
@@ -71,6 +73,9 @@ public class BidExternalInterfaceController {
         if (StringUtils.isEmpty(bjbh)) {
             return JGBAjaxResult.error("报建编号不能为空");
         }
+                if (StringUtils.isEmpty(bjbh)) {
+                    return JGBAjaxResult.error("报建编号不能为空");
+                }
         if (StringUtils.isEmpty(zbid)) {
             return JGBAjaxResult.error("招标唯一标示不能为空");
         }
