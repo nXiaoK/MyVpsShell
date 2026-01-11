@@ -52,19 +52,7 @@ public class BidExternalInterfaceController {
      * 返回 null 代表校验通过
      */
     private JGBAjaxResult validateBaseParams(String bdh, String bjbh, String zbid) {
-        if (StringUtils.isEmpty(bdh)) {
-            return JGBAjaxResult.error("标段号不能为空");
-        }
-        if (StringUtils.isEmpty(bjbh)) {
-            return JGBAjaxResult.error("报建编号不能为空");
-        }
-                if (StringUtils.isEmpty(bjbh)) {
-                    return JGBAjaxResult.error("报建编号不能为空");
-                }
-        if (StringUtils.isEmpty(zbid)) {
-            return JGBAjaxResult.error("招标唯一标示不能为空");
-        }
-        return null;
+
     }
 
     /**
