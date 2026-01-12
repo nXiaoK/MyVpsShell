@@ -13,17 +13,12 @@
         EvaluationResult evaluationResult = evaluationResultService.selectEvaluationResultList(params).stream().findFirst().orElse(null);
         return null;
     }
-dfafasfdfafdsfsf
 
     public JGBAjaxResult queryStatus(@RequestBody BidQueryStatus queryStatus) {
         JGBAjaxResult valid = validateBaseParams(queryStatus.getBdh(), queryStatus.getBjbh(), queryStatus.getZbid());
         if (valid != null) {
             return valid;
         }
-        if (StringUtils.isEmpty(bjbh)) {
-            return JGBAjaxResult.error("报建编号不能为空");
-        }
-        dfasfsaffdsaf
 
         BidStatusVo vo = bidExternalInterfaceService.queryStatus(queryStatus);
         return successOrFail(vo);
