@@ -30,6 +30,21 @@ public class BidExternalInterfaceController {
     }
 
     /**
+     * 查询评分状态接口
+     */
+    @PostMapping("/queryStatus")
+    public JGBAjaxResult queryStatus(@RequestBody BidQueryStatus queryStatus) {
+        JGBAjaxResult valid = validateBaseParams(queryStatus.getBdh(), queryStatus.getBjbh(), queryStatus.getZbid());
+        if (valid != null) {
+            return valid;
+        }
+
+        BidStatusVo vo = bidExternalInterfaceService.queryStatus(queryStatus);
+        return successOrFail(vo);
+    }
+
+
+    /**
      * 查询单个条款编码评分接口
      */
     @PostMapping("/score/queryByTkbm")

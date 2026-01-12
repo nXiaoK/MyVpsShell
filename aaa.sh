@@ -14,6 +14,23 @@
         return null;
     }
 
+
+    /**
+     * 查询评分状态接口
+     */
+    @PostMapping("/queryStatus")
+    public JGBAjaxResult queryStatus(@RequestBody BidQueryStatus queryStatus) {
+        JGBAjaxResult valid = validateBaseParams(queryStatus.getBdh(), queryStatus.getBjbh(), queryStatus.getZbid());
+        if (valid != null) {
+            return valid;
+        }
+
+        BidStatusVo vo = bidExternalInterfaceService.queryStatus(queryStatus);
+        return successOrFail(vo);
+    }
+
+dfafasfdfafdsfsf
+
     public JGBAjaxResult queryStatus(@RequestBody BidQueryStatus queryStatus) {
         JGBAjaxResult valid = validateBaseParams(queryStatus.getBdh(), queryStatus.getBjbh(), queryStatus.getZbid());
         if (valid != null) {
